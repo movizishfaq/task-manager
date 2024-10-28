@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2nd minor projectx</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      .shadow-3d {
+        box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3),
+          -4px -4px 10px rgba(255, 255, 255, 0.6);
+      }
+      .glass {
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+      }
+
+      #toast {
+        position: fixed;
+        bottom: 5%;
+        right: 5%;
+        background-color: #000;
+        color: white;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: opacity 0.3s ease;
+        opacity: 0;
+        display: none;
+      }
+      #editModal {
+        position: fixed;
+        inset: 0;
+        flex: 1;
+        align-items: center;
+        justify-content: center;
+        z-index: 50;
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+    </style>
+  </head>
+  <body
+    class="bg-gradient-to-br from-gray-900 to-gray-800 flex items-center justify-center min-h-screen p-6"
+  >
+    <div class="flex gap-8 w-full max-w-2xl">
+      <div class="w-full bg-white glass rounded-lg shadow-3d p-6">
+        <h2 class="text-xl font-semibold text-gray-100 mb-4">Your Tasks</h2>
+        <ul id="taskList" class="space-y-4">
+          <li id="noTaskMessage" class="text-gray-400 italic">
+            No tasks added yet.
+          </li>
+        </ul>
+      </div>
+      <div class="flex-grow bg-white glass rounded-lg shadow-3d p-6">
+        <h1 class="text-3xl font-bold text-gray-100 text-center mb-6">
+          Task Manager
+        </h1>
+        <div class="flex items-center mb-4">
+          <input
+            type="text"
+            id="taskInput"
+            placeholder="Add a new task"
+            class="flex-grow p-3 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800 bg-gray-200 shadow-md"
+          />
+          <button
+            id="addTaskButton"
+            class="bg-gradient-to-br from-blue-500 to-purple-500 text-white font-semibold px-6 py-2 rounded-r-lg hover:scale-105 transition-transform shadow-lg"
+          >
+            Add
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="toast"></div>
+
+    <div id="editModal" class="hidden">
+      <div class="bg-black rounded-lg shadow-lg p-6">
+        <h2 class="text-xl text-white font-semibold mb-4">Edit Task</h2>
+        <input
+          type="text"
+          id="editTaskInput"
+          class="flex-grow p-2 rounded-lg border border-gray-300"
+        />
+        <div class="flex justify-end mt-4">
+          <button
+            id="saveEditButton"
+            class="bg-gray-500 text-black px-4 py-2 rounded-lg mr-2"
+          >
+            Save
+          </button>
+          <button
+            id="cancelEditButton"
+            class="bg-red-500 text-white px-4 py-2 rounded-lg"
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
